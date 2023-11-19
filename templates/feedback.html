@@ -1,0 +1,73 @@
+{% extends "Base.html" %}
+{% block title %}Feedback Page{% endblock %}
+{% block content %}
+<h2>Below are things that should still be kept and/or adjusted on your {{feedback}}</h2>
+<br> <br>
+<body>
+    {% for row in qa_results %}
+        {% for i in range(row|length) %}
+            <li>{{row[i]}}</li>
+        {% endfor %}
+    {% endfor %}
+</body>
+<br> <br>
+<h2>Below you can find feedback pertaining to your grammar usage in your {{feedback}}</h2>
+<br> <br>
+<body>
+    {% for grammar_result in grammar_results %}
+        <li>
+            The sentence <strong>{{ grammar_result }}</strong> in your {{ feedback }} is not grammatically correct.
+            <br> <br> <br>
+        </li>
+    {% endfor %}
+<br> <br>
+
+
+    {% if resume_cov_contents %}
+        <div>
+            <h2>Contents:</h2>
+            <br> <br>
+            <pre class="pdf-contents">{{ resume_cov_contents }}</pre>
+        </div>
+    {% endif %}
+
+    <style>
+        .pdf-contents {
+            color: white;
+        }
+        .pdf-contents {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        .pdf-contents {
+            line-height: 1.5;
+        }
+        .pdf-contents {
+            margin: 10px;
+            padding: 10px;
+        }
+        h5 {
+            text-align: center;
+        }
+        .pdf-contents {
+            text-align: left;
+        }
+        .pdf-contents strong {
+            font-weight: bold;
+        }
+
+        .pdf-contents em {
+            font-style: italic;
+        }
+
+        .pdf-contents u {
+            text-decoration: underline;
+        }
+        .pdf-contents {
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+            border: 1px solid #ccc;
+        }
+    </style>
+</body>
+{% endblock %}

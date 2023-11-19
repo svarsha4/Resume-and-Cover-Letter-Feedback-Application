@@ -1,0 +1,81 @@
+{% extends "Base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<h2>Welcome to the Resume and Cover Letter Feedback Application.</h2>
+<br> <br> <br> <br> <br>
+<h5>Our job is to provide instant yet detailed feedback that will help facilitate the creation of a resume or cover letter that will 
+give you a competitive edge to whichever position you are applying.</h5>
+<body>
+    <br> <br>
+    <p>Please upload your resume or cover letter below to be reviewed.</p>
+    <form action="#" id="form" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file" accept=".pdf">
+        <button id= "submit" disabled="disabled">Upload</button>
+        <script type="text/javascript">
+            form.addEventListener('input', () => {
+                if(file.value != '') {
+                    submit.removeAttribute('disabled');
+                }
+                else {
+                    submit.setAttribute('disabled', 'disabled');
+                }
+            });
+        </script>
+    </form>
+
+
+    {% if pdf_contents %}
+    <div>
+        <h2>Contents:</h2>
+        <br> <br>
+        <pre class="pdf-contents">{{ pdf_contents }}</pre>
+    </div>
+    {% endif %}
+
+    <style>
+        .pdf-contents {
+            color: white;
+        }
+        .pdf-contents {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        .pdf-contents {
+            line-height: 1.5;
+        }
+        .pdf-contents {
+            margin: 10px;
+            padding: 10px;
+        }
+        .pdf-contents {
+            text-align: left;
+        }
+        .pdf-contents strong {
+            font-weight: bold;
+        }
+
+        .pdf-contents em {
+            font-style: italic;
+        }
+
+        .pdf-contents u {
+            text-decoration: underline;
+        }
+        .pdf-contents {
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <script>
+        {% if uploaded_file is not none %}
+            setTimeout(function() {
+                window.location.href = "{{ url_for('options', file=uploaded_file.filename) }}";
+            }, 3000);
+        {% endif %}
+    </script>
+
+
+</body>
+{% endblock %}

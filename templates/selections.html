@@ -1,0 +1,19 @@
+{% extends "Base.html" %}
+{% block title %}Selections Page{% endblock %}
+{% block content %}
+<h2>Please select below whether you are getting feedback on your resume
+    or cover letter as well as what kind of job you plan to apply for</h2>
+<body>
+    <form id="form" method="post" class="form">
+        <select name="option" id="option">
+            <option value="Resume">Resume</option>
+            <option value="Cover Letter">Cover Letter</option>
+        </select>
+        <select name="job" id="job">
+            <option value="Data Scientist">Data Scientist</option>
+            <option value="Software Engineer">Software Engineer</option>
+        </select>
+        <button id= "submit">Continue</button>
+    </form>
+</body>
+{% endblock %}
